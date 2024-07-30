@@ -1,4 +1,5 @@
 # Persian Chat Component
+![Example Image](https://github.com/mehrankhorrami/vue-persian-chat-component/blob/master/chat-component-demo.png)
 
 ## Project setup
 ```
