@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* width */
+.pchat-custom-scroll::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 4px;
+}
+
+/* Track */
+.pchat-custom-scroll::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+.pchat-custom-scroll::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+/* Handle on hover */
+.pchat-custom-scroll::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

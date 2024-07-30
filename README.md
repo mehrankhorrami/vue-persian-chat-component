@@ -1,24 +1,71 @@
-# chat-component
+# Persian Chat Component
 
 ## Project setup
 ```
-npm install
+npm i vue-persian-chat-component
 ```
 
-### Compiles and hot-reloads for development
+## Usage
+main.js
 ```
-npm run serve
-```
+import Vue from 'vue';
+import App from './App.vue';
+import Chat from 'vue-persian-chat-component';
+import 'vue-persian-chat-component/dist/ChatComponent.css';
 
-### Compiles and minifies for production
-```
-npm run build
-```
+Vue.config.productionTip = false;
 
-### Lints and fixes files
-```
-npm run lint
-```
+Vue.component('ChatComponent', Chat);
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+new Vue({
+  render: h => h(App),
+}).$mount('#app')
+```
+App.vue
+```
+<template>
+  <ChatComponent :faqs="faqs" @submitted="onChatFormSubmitted"/>
+</template>
+
+<script>
+    export default {
+      name: 'App',
+    
+      data: () => ({
+        faqs: [
+          {
+            question: 'چطور ثبت نام کنم؟',
+            answer: 'پاسخ سوال خود را اینجا قرار دهید.',
+            show: false,
+          },
+          {
+            question: 'چطور میتوانم کالاهای خود را ثبت کنم؟',
+            answer: 'پاسخ سوال خود را اینجا قرار دهید.',
+            show: false,
+          },
+          {
+            question: 'آیا خدمات مربوط به ثبت و انتشار کالا رایگان است؟',
+            answer: 'پاسخ سوال خود را اینجا قرار دهید.',
+            show: false,
+          },
+          {
+            question: 'چطور از کد تخفیف استفاده کنیم؟',
+            answer: 'پاسخ سوال خود را اینجا قرار دهید.',
+            show: false,
+          },
+          {
+            question: 'چطور میتوانم با پشتیبانی تماس بگیرم؟',
+            answer: 'پاسخ سوال خود را اینجا قرار دهید.',
+            show: false,
+          },
+        ],
+      }),
+
+      methods: {
+        onChatFormSubmitted(formData) {
+          console.log(formData);
+        }
+      }
+    };
+</script>
+```
