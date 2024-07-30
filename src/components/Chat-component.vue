@@ -13,7 +13,8 @@
           <path d="M3.5 12H20.33" stroke="#111827" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
                 stroke-linejoin="round"/>
         </svg>
-        <span class="w-full font-bold text-[20px]">پشتیبان</span>
+        <span v-if="!isSendTicketEnabled && faqs.length > 0" class="w-full font-bold text-[20px]">پشتیبان</span>
+        <span v-else class="w-full font-bold text-[20px]">ارسال پیام برای پشتیبان</span>
         <svg @click="toggleIsOpen" class="cursor-pointer" width="30" height="30" viewBox="0 0 30 30" fill="none"
              xmlns="http://www.w3.org/2000/svg">
           <path d="M10 20L20.0001 9.99988" stroke="#111827" stroke-width="1.5" stroke-linecap="round"
