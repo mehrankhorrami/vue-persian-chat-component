@@ -3,10 +3,11 @@
       class="pchat-wrapper fixed left-[20px] right-[20px] bottom-[20px] md:left-[40px] md:right-auto md:bottom-[40px] flex flex-col gap-4 items-end z-[999]">
     <div
         v-if="isOpen"
-        class="pchat-body bg-white border-[#E2E8F0] border-8 rounded-2xl rounded-bl-none w-full h-full md:w-[420px] md:h-[65vh] py-6 px-3 flex flex-col gap-6"
+        class="pchat-body bg-white border-[#E2E8F0] border-8 rounded-2xl rounded-bl-none w-full h-full md:w-[420px] md:h-[65vh] py-6 px-3 flex flex-col gap-6 shadow-xl"
     >
       <div class="pchat-body-header flex flex-row items-center justify-center gap-4 px-3">
-        <svg v-if="isSendTicketEnabled && faqs.length > 0" @click="toggleIsSendTicketEnabled" class="cursor-pointer" width="24" height="24"
+        <svg v-if="isSendTicketEnabled && faqs.length > 0" @click="toggleIsSendTicketEnabled" class="cursor-pointer"
+             width="24" height="24"
              viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M14.4299 5.92999L20.4999 12L14.4299 18.07" stroke="#111827" stroke-width="1.5" stroke-miterlimit="10"
                 stroke-linecap="round" stroke-linejoin="round"/>
@@ -46,8 +47,20 @@
 
     </div>
 
+    <div
+        v-if="isHelpDialogOpen && !isOpen"
+        class="pchat-notif fixed left-[20px] right-[20px] bottom-[80px] md:left-[40px] md:right-auto md:bottom-[120px] flex flex-col gap-2 items-end z-[999] bg-gray-100 rounded-lg w-full md:w-[300px]"
+        style="padding: 8px;"
+    >
+      <p class="w-full font-bold text-[16px] flex flex-row text-right">
+        <span class="w-full">پشتیبانی</span>
+        <svg @click="closeHelpDialogHandle" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" class="cursor-pointer"><path d="M10 20L20.0001 9.99988" stroke="#111827" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20.0001 20L10 9.99988" stroke="#111827" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </p>
+      <p class="text-right w-full">اگر سوالی دارید برای ما پیام ارسال کنید.</p>
+    </div>
+
     <button
-        class="pchat-btn w-[60px] h-[60px] bg-[#172554] rounded-full flex items-center justify-center"
+        class="pchat-btn w-[60px] h-[60px] bg-[#172554] rounded-full flex items-center justify-center shadow-xl"
         @click="toggleIsOpen"
     >
       <svg v-if="!isOpen" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -82,13 +95,18 @@ export default {
   data() {
     return {
       isOpen: false,
+      isHelpDialogOpen: true,
       isSendTicketEnabled: false
     }
   },
   methods: {
     toggleIsOpen() {
       this.isOpen = !this.isOpen;
+      this.isHelpDialogOpen = false;
       this.isSendTicketEnabled = false;
+    },
+    closeHelpDialogHandle() {
+      this.isHelpDialogOpen = false;
     },
     toggleIsSendTicketEnabled() {
       this.isSendTicketEnabled = !this.isSendTicketEnabled;
