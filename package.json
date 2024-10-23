@@ -1,6 +1,6 @@
 {
   "name": "vue-persian-chat-component",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "main": "dist/ChatComponent.umd.js",
   "author": "Mehran Khorrami",
   "description": "A Persian chat component using Vue v2 and Tailwind.",
