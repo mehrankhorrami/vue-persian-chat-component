@@ -95,7 +95,7 @@ export default {
   data() {
     return {
       isOpen: false,
-      isHelpDialogOpen: true,
+      isHelpDialogOpen: localStorage.getItem('isHelpDialogOpen') !== 'false',
       isSendTicketEnabled: false
     }
   },
@@ -103,10 +103,12 @@ export default {
     toggleIsOpen() {
       this.isOpen = !this.isOpen;
       this.isHelpDialogOpen = false;
+      localStorage.setItem('isHelpDialogOpen', 'false');
       this.isSendTicketEnabled = false;
     },
     closeHelpDialogHandle() {
       this.isHelpDialogOpen = false;
+      localStorage.setItem('isHelpDialogOpen', 'false');
     },
     toggleIsSendTicketEnabled() {
       this.isSendTicketEnabled = !this.isSendTicketEnabled;
